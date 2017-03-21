@@ -1,0 +1,270 @@
+
+{% extends 'base.html' %}
+	{% block title%}Contacto{% endblock%}
+	{% block content %}
+<script
+			  src="https://code.jquery.com/jquery-3.1.1.js"
+			  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+			  crossorigin="anonymous"></script>
+				<center>
+					
+			            <p class="lead">
+			             Somos Cursos.com... nos contactaremos a la brevedad 
+			            </p>
+			          
+					
+				</center>
+				
+				
+				<center>
+					
+				<div  class="comentario">
+					
+					<form class="form_" method="post">
+					{% csrf_token %}
+				
+				
+					<table>
+					<tr>
+							<td>
+								<div class="input-group input-group-lg" >
+								<span class="input-group-addon" id="sizing-addon1">Nombre</span>
+								{{ formulario.nombre }}	
+								{{ formulario.nombre.errors }}
+									
+								</div>
+								<br>
+							</td>
+							
+						</tr>
+						<tr>
+							
+							<td>
+							 <div class="input-group input-group-lg" >
+								<span class="input-group-addon" id="sizing-addon1">correo-@</span>
+									{{ formulario.correo }}	
+									{{ formulario.correo.errors }}
+								</div>
+								<br>
+							</td>
+						</tr>
+						<tr>
+							
+							<td class="mensaje" >
+								 <div class="input-group input-group-lg"   >								
+									{{formulario.mensaje}}
+									{{ formulario.mensaje.errors}}
+								</div>
+							</td>
+						</tr>
+						
+						
+					</table>
+					<br>
+						<input class="btn btn-lg btn-default aj" type="submit" value="Enviar">
+						
+					</form>
+					
+				</div>
+					
+				</center>
+
+					<style type="text/css">
+						#MensajeContent{
+							height: 85px;
+						}
+					</style>
+		<p>this is </p>	
+
+
+			<br>
+
+
+
+			<div id="capa">
+Esta capa es independiente y voy a  y eliminar clases css sobre ella
+</div>
+<a href="#">hola</a>
+<br>
+<br>
+<style type="text/css">
+.clasecss{
+   background-color: blue;
+   font-weight: bold;
+   background: red;
+}
+
+</style>
+<script>
+$(document).ready(function(){
+   $("a").mouseover(function(event){
+      $("#capa").addClass("clasecss");
+   });
+   $("a").mouseout(function(event){
+      $("#capa").removeClass("clasecss");
+   });
+});
+</script>
+
+
+<script>
+$(document).ready(function(){
+	$("#mayoria_edad").click(function(evento){
+		if ($("#mayoria_edad").prop("checked")){
+			$("#formulariomayores").css("display", "block");
+		}else{
+			$("#formulariomayores").css("display", "none");
+		}
+	});
+});
+</script>
+
+
+
+<form>
+Nome: <input type="text" name="nombre">
+<br>
+<input type="checkbox" name="mayor_edad" value="1" id="mayoria_edad"> Soy mayor de edad
+<br>
+<div id="formulariomayores" style="display: none;">
+Dado para maiores de idade: <input type="text" name="mayores_edad">
+</div>
+</form>
+
+<br>
+<p>this is otro efecto  </p>
+
+<br>				
+<script>
+$(document).ready(function(){
+   $("#ocultar").click(function(event){
+    event.preventDefault();
+    $("#capaefectos").hide("slow");
+   });
+
+   $("#mostrar").click(function(event){
+    event.preventDefault();
+    $("#capaefectos").show(3000);
+   });
+});
+</script><div id="capaefectos" style="background-color: #cc7700; color:fff; padding:10px;">
+Esto es una capa que nos servirá para hacer efectos!
+<br>
+<br>
+Pongo este texto simplemente de prueba
+</div>
+
+<p>
+<a href="#" id="ocultar">Ocultar la capa</a> |
+<a href="#" id="mostrar">Mostrar la capa</a>
+</p>				
+<br>
+<p>this is jajaj</p>
+
+<p>escribiendo mi propio para aplicacion educativa</p>
+<div id="asd">
+	<p>this is jajaja</p>
+</div>
+<a href="#" id="ass">pos</a>
+<script>
+$(document).ready(function(){
+   $("#ass").click(function(event){
+   	event.preventDefault();
+    $("#asd").addClass("clasecss");
+   });
+});
+	
+</script>  
+<br>
+
+<p>this is react</p>
+<script type="text/babel">
+
+const element = <h1>Hello, world</h1>;
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+
+</script>
+<br>
+<div id="root">
+  <!-- This div's content will be managed by React. -->
+</div>
+<br>
+<p>this is test of react</p>
+
+<div id="greeting-div"></div>
+<script type="text/babel">
+      var Greeting = React.createClass({
+        render: function() {
+          return (
+            <p>Hello, Universe</p>
+          )
+        }
+      });
+
+      ReactDOM.render(
+        <Greeting/>,
+        document.getElementById('greeting-div')
+      );
+    </script>
+
+
+<script type="text/babel">
+	function tick() {
+  const element = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(
+    element,
+    document.getElementById('root')
+  );
+}
+
+setInterval(tick, 1000);
+</script>
+<div id="root">
+  <!-- This div's content will be managed by React. -->
+</div>
+
+
+<h2>this is test</h2>
+<script>
+function comprobarClave(){
+    clave1 = document.f1.clave1.value
+    clave2 = document.f1.clave2.value
+
+    if (clave1 == clave2)
+       alert("Las dos claves son iguales...\nRealizaríamos las acciones del caso positivo")
+    else
+       alert("Las dos claves son distintas...\nRealizaríamos las acciones del caso negativo")
+}
+</script>
+</head>
+
+<body>
+
+<h1>Validar si la contraseña y la repetición de la contraseña son iguales</h1>
+<br>
+Escribe una supuesta contraseña dos veces, una en cada campo, y pulsa el botón. Javascript te dirá si las dos son iguales.
+
+<br>
+<form action="" name="f1">
+Contraseña: <input type="password" name="clave1" size="20">
+<br>
+Repite contraseña: <input type="password" name="clave2" size="20">
+<br>
+<input type="button" value="Comprobar si son iguales" onClick="comprobarClave()">
+
+</form> 
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/x.y.z/react.min.js"></script>
+    <script src="https://fb.me/react-15.0.0.js"></script>
+    <script src="https://fb.me/react-dom-15.0.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+	{% endblock %}

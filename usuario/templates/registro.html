@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+	{% block title %}Register{% endblock %}
+	{% block registro %}
+
+		<style>
+
+input[type=number]::-webkit-outer-spin-button,
+
+input[type=number]::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+
+}
+
+ 
+
+input[type=number] {
+
+    -moz-appearance:textfield;
+
+}
+
+</style>
+	<div class="formulario">
+		<form  method="post" >{% csrf_token %}
+				
+				<center>
+			
+				<table>
+					<tr>
+						
+						<td>
+							<div class="input-group input-group-lg" >
+							<span class="input-group-addon" id="sizing-addon1">Usuario</span>
+							{{ frm.username }}	
+							{{ frm.username.errors }}
+							</div>	
+							<br>
+						</td>
+					</tr>
+					<tr>
+						
+						<td>
+						<div class="input-group input-group-lg" >
+							<span class="input-group-addon" id="sizing-addon1"> &nbsp;Pass &nbsp;</span>
+							{{ frm.password }}
+							{{ frm.password.errors }}
+							</div>	
+							<br>
+
+				</td>
+					</tr>
+					<tr>
+						
+						<td>
+						<div class="input-group input-group-lg" >
+							<span class="input-group-addon" id="sizing-addon1"> &nbsp; &nbsp;Dni  &nbsp;&nbsp;</span>
+							
+							{{ frm.dni }}
+							{{ frm.dni.errors }}
+							</div>	
+							<br>
+						</td>
+					</tr>
+					<tr>
+						
+						<td>
+						<div class="input-group input-group-lg" >
+							<span class="input-group-addon" id="sizing-addon1">Email@</span>
+							
+						{{ frm.email }}
+						{{ frm.email.errors }}
+							</div>	
+							<br>
+						</td>
+					</tr>
+					<tr>
+						
+						<td><div class="input-group input-group-lg" >
+							<span class="input-group-addon" id="sizing-addon1">Nombre</span>
+							
+							{{ frm.first_name }}
+							{{ frm.first_name.errors }}
+							</div>	
+							<br>
+						</td>
+					</tr>
+					<tr>
+						
+						<td>
+						<div class="input-group input-group-lg" >
+							<span class="input-group-addon" id="sizing-addon1">Apellido</span>
+							
+							{{ frm.last_name }}
+							{{ frm.last_name.errors }}
+							</div>	
+							<br>
+						</td>
+					</tr>
+					<tr>
+						
+						<td>
+						<div class="input-group  " style="margin-left: 80px;" >
+							<span class="input-group-addon" id="sizing-addon1"> Tipo Usuario</span>
+							
+							{{ frm.gender }}
+							{{ frm.gender.errors }}
+							</div>	
+							<br>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<button class="btn btn-lg btn-default aj">Registro</button>
+				</center>	
+			</form>
+
+	</div>
+	
+
+<style type="text/css">
+  .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+ 
+}
+</style>
+		
+			
+		
+	{% endblock%}		}

@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<!-- -->
+
+<br>
+	          	<style type="text/css">
+	          		.go-video{
+	          			height:500px;
+	          			width:850px;
+	          		}
+	          		.opciones{
+	          			height: 400px;
+	          			width: 290px;
+	          			background-color: peru;
+	          			overflow: scroll;
+
+
+	          		}
+	          	</style>
+
+	          	<center><h1>parte del jajaj </h1></center>
+	          	<div class="container">
+		          		<div class="row">
+		          			<div class="col-md-3">
+			          			<div class="list-group opciones">
+						          	{% for o in c  %}
+						          			<a href="#seccion{{ o.id }}" data-toggle="tab" role="tab" class="list-group-item">{{ o.titulo }}{{o.id}}</a>
+						          	{% endfor %}
+			          			</div>
+		          			</div>
+		          			<div class="col-md-8">
+		          				<div class="tab-content">
+		          				
+		          					{% for a in c  %}
+		          							{% for u in d %}
+		          								{% if  a.id  ==  u.id  %}
+						          		<div class="tab-pane " role="tabpanel" id="seccion{{ u.id }}">
+						          			<video class="go-video" controls playinline>
+						          				<source src="{{u.docfile.url}}" type="video/mp4">
+						          			</video>
+						          			<p> {{ u.tema }} {{u.docfile.url}}hello{{ u.filename }} {{ u.docfile }}</p>
+						     <!-- mensajes echos para el video-->
+						     {% for comment in co %}
+						     	{% if comment.tema.id == u.id %}
+						     	<center>
+								<table>
+									<tr>
+										<td>{{ comment.user }} ja {{ comment.tema.id }}</td>
+										<td>{{ comment.email }}</td>
+									</tr>
+									<tr>
+										<td>{{ comment.body }}</td>
+									</tr>
+								</table>					   
+						     		
+						     	</center>
+						     	
+						     	{% endif %}
+						   
+	
+
+						     {% endfor %}     			
+					<!-- formulario para un determinado rtema -->
+				<form class="form_" method="post">
+					{% csrf_token %}
+				
+		
+					<table>
+						<tr>
+							<td>Nombre del Usuario </td>
+							<td>{{ form.user }}	
+								{{ form.user.errors }}
+							</td>
+						</tr>
+						<tr>
+							<td>Mensaje a enviar </td>
+							<td class="mensaje" >
+								{{form.email}}
+								{{ form.email.errors}}
+							</td>
+						</tr>
+						<tr>
+							<td>Cuerpo </td>
+							<td class="mensaje" >
+								{{form.body}}
+								{{ form.email.errors}}
+							</td>
+						</tr>
+					</table>
+					<br>
+						<input class="btn btn-lg btn-default aj" type="submit" value="Enviar">
+					</form>
+
+
+
+
+
+						          		</div>
+
+	          				<!--
+	          				hola
+	          								<a class='btn btn-danger' href="#" onclick="window.location.href='comment/{{u.id}}'"
+				          	>Agregar{{u.id}}</a>
+				          	<p> {{ u.tema }} {{u.docfile.url}}hello{{ u.filename }} {{ u.docfile }}</p>
+				          		-->				
+				          						{% endif %}
+						          			{%	endfor	%}
+						          	{% endfor %}
+		          				</div>
+		          			</div>
+		          		</div>
+	          	</div>
+	          	
+
+<!-- -->
+
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Agregar Tema </button>
+<!--  -->
+	 <!--esta es la parte para agregar un  tema al curso -->
+				          	<!-- pop up para agregar temas a un curso -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Agregando Nuevo Tema al curso </h4>
+      </div>
+      <div class="modal-body">
+      <!--  -->
+
+<form method="post" enctype="multipart/form-data" >
+{% csrf_token %}
+				
+				<table>
+					<tr>
+						<td>Titulo del capitulo </td>
+						<td>{{ fr.titulo }}	
+							{{ fr.titulo.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td>Descripcion del capitulo</td>
+						<td>{{ fr.descripcion }}	
+							{{ fr.descripcion.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td>Nombre del archivo</td>
+						<td>{{ frm.filename }}	
+							{{ frm.filename.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td>Selecionar Archivo multimedia</td>
+						<td>{{ frm.docfile }}	
+							{{ frm.docfile.errors }}
+						</td>
+					</tr>
+				</table>
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				 <input type="submit" value="Submit">
+	
+</form>
+      <!--  -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- parte de la caja de comentarios  -->
+
+{% endblock %}

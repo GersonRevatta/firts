@@ -1,0 +1,40 @@
+<h2>comments</h2>
+<h2>yup</h2>
+{% for i in ls %}
+<p> {{ i.user }}</p>
+<p>{{ i.body }}</p>
+
+{% endfor %}
+<hr>
+		<div class="formulario">
+		<form  method="post" >{% csrf_token %}
+				
+				<center>
+			
+				<table>
+					<tr>
+						<td>User</td>
+						<td>{{ ls.user }}	
+							{{ ls.user.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>{{ form.email }}	
+							{{ form.email.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>{{ form.body }}	
+							{{ form.body.errors }}
+						</td>
+					</tr>
+				</table>
+				<br>
+				<button class="btn btn-lg btn-default aj">Comment</button>
+				</center>	
+			</form>
+
+	</div>
+		

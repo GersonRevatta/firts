@@ -1,0 +1,171 @@
+
+{% extends 'base.html' %}
+{% block search %}
+		<form class="navbar-form navbar-left" method="GET" action="">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Search" name="q" value="{{ request.GET.q }}">
+	        </div>
+	        <button type="submit" class="btn btn-default">Search</button>
+      </form>
+{% endblock %}
+{% block content %}
+
+
+<!--  -->
+
+<!--  -->
+	            {%  if lis.gender == 't' %}
+	            <p class="lead">
+	            	
+	            	<center><p class="lead">Agrega un nuevo curso</p></center>
+	              	<center>
+					
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Agregar Curso</button>
+
+	              		
+
+	              	</center>
+	            </p>
+	            <p class="lead">
+	            <center><p class="lead">Ver mis cursos creados</p></center>
+	            <center>	
+	              <a  class="btn btn-lg btn-default aj" onclick="window.location.href='/my'" >
+	              	Mis Cursos
+	              </a>
+	            </center>
+	            </p>
+	            {% endif %}
+	<style type="text/css">
+	       			.row{
+	       				margin-left: 55px;
+	       			}
+	       		</style>
+	          <div class="row">
+			          {% for i in ls  %}	 	          
+				
+			 				{% if i.accesoCurso == 'act' %}
+							<div  id='aaa' class="btn btn-default"  onclick="window.location.href='mostrarcapitulos/{{i.codigo}}'">
+									
+							          	<div class="col-md-5" style="
+							          	background-image: url('media/{{i.imagen}}');
+							          	background-size: 100% 100%;
+							          	width: 250px;
+							          	height: 240px;
+							          	">
+							          	<!-- 
+							          	<a class='btn btn-danger' href="#" onclick="window.location.href='mostrarcapitulos/{{i.codigo}}'"
+							          	> Mostrar </a>
+							          	-->
+							          	</div>
+							   </div>
+							{% endif %}
+				
+						{% endfor %}
+				</div>
+	          </div>
+	          <br>
+
+<!-- -->
+
+
+
+
+
+
+
+
+
+
+<!-- popup para agregar curso -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Agregando Nuevo Tema </h4>
+      </div>
+      <div class="modal-body">
+        <!--  -->
+<form method="post" enctype="multipart/form-data" >
+{% csrf_token %}
+				
+				<table>
+					<tr>
+						<td>nombre</td>
+						<td>{{ frm.name }}	
+							{{ frm.name.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td>descripcion</td>
+						<td>{{ frm.descripcion }}	
+							{{ frm.descripcion.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td>Selecionar Imagen</td>
+						<td>{{ frm.imagen }}	
+							{{ frm.imagen.errors }}
+						</td>
+					</tr>
+										<tr>
+						<td>Selecionar </td>
+						<td>{{ fr.nombre }}	
+							{{ fr.nombre.errors }}
+						</td>
+					</tr>
+
+				</table>
+        	<button type="submit" class="btn btn-primary">Aceptar</button>
+        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</form>
+        <!--  -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- paginations -->
+<div class="pagination Page navigation">
+    <span class="step-links">
+        {% if ls.has_previous %}
+            <a href="?page={{ ls.previous_page_number }}&q={{ request.GET.q }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ ls.number }} of {{ ls.paginator.num_pages }}.
+        </span>
+
+        {% if ls.has_next %}
+            <a href="?page={{ ls.next_page_number }}&q={{ request.GET.q }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+<!-- pagination of bootsrap-->   
+<br>
+<div class="text-center">
+		<nav aria-label="Page navigation">
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+</div>
+
+{% endblock  %}
+
+
+

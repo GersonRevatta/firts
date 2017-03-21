@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+	{% block title%}Loguin{% endblock%}
+	{% block loguin%} 
+		<form method="post">{% csrf_token %}
+		  <center>
+		        <table>
+	          <tr>
+		            
+		            <td>
+			            <div class="input-group input-group-lg" >
+							<span class="input-group-addon" id="sizing-addon1">&nbsp;Usuario&nbsp;</span>
+			            	{{c.username}}
+			              	{{ c.username.errors }}
+						</div>
+						<br>
+		            </td>
+		          </tr>
+		          <tr> 
+		            
+		            <td>  
+		            	<div class="input-group input-group-lg" >
+							<span class="input-group-addon" id="sizing-addon1">Password</span>			
+			            	{{ c.password }}
+			                {{ c.password.errors }}
+						</div>
+						<br>
+		            </td>
+		          </tr>
+		        
+		        </table>
+		        
+		        <button class="btn btn-lg btn-default aj">Iniciar</button>
+		  </center>
+
+		</form>
+
+
+<style type="text/css">
+  .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+ 
+}
+</style>
+
+	{%endblock%}

@@ -1,0 +1,208 @@
+
+
+
+body{
+
+rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,0.83)), color-stop(51%, rgba(209,209,209,0.83)), color-stop(100%, rgba(254,254,254,0.66)));
+background: -webkit-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,0.83) 50%, rgba(209,209,209,0.83) 51%, rgba(254,254,254,0.66) 100%);
+background: -o-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,0.83) 50%, rgba(209,209,209,0.83) 51%, rgba(254,254,254,0.66) 100%);
+background: -ms-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,0.83) 50%, rgba(209,209,209,0.83) 51%, rgba(254,254,254,0.66) 100%);
+background: linear-gradient(to right, rgba(226,226,226,1) 0%, rgba(219,219,219,0.83) 50%, rgba(209,209,209,0.83) 51%, rgba(254,254,254,0.66) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=1 );
+    
+}
+
+.comentario{
+    
+}
+
+.conta_{
+    margin: 0px auto;
+    width: 90%;
+    margin-right: 2px; 
+}
+.conta_ button{
+    width:15%;
+    color: blue;
+}
+
+/*style de hola.html*/
+.cont_{
+    margin: 0px auto;
+    width: 90%;
+    margin-right: 1px;
+}
+
+
+button {
+    background: red;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    color: white;
+  
+    margin-top: 10px;
+}
+/*pre{
+    margin-left: 100px;
+        width: 1200px;
+    height: 300px;
+     
+
+}
+*/
+
+
+/* 
+   .form_  textarea{
+    margin-left: 100px;
+    width: 1200px;
+    height: 300px; 
+}
+ */ 
+@media (max-width:  284px){
+   
+
+    .conta_ button{
+        width: 90%;
+        
+        
+    }
+    .cont_ button{
+        width: 90%;
+    }
+    footer {
+    text-align: center;
+    color: black;
+    font-size: 10px;
+    }
+
+
+
+}
+
+@media (max-width:  480px){
+   
+   footer {
+    text-align: center;
+    color: black;
+    font-size: 10px;
+    }
+
+    
+    
+.conta_ button{
+        width: 90%;
+        
+        
+    }
+
+  .cont_ button{
+        width: 90%;
+    }
+
+/*    .form_  textarea{
+    width: 400px;
+    height: 300px; 
+
+  
+}
+*/
+
+   .aj{
+
+width: 80%
+ }
+
+}
+
+
+@media (max-width:  768px){
+    
+.conta_ button{
+        width: 90%;
+        
+        
+    }
+    .cont_ button{
+        width: 90%;
+    }
+
+   .aj{
+
+width: 80%
+ }
+
+    
+
+
+}
+
+@media (min-width: 1000px){
+
+     
+
+}
+
+
+/*Codigo del footer  */
+.site-footer{
+    background-color: #222;
+    color: #fff;
+    margin-top: 30px;
+    padding-top: 30px;
+
+}
+.bootom-footer{
+    border-top: 1px solid #b2b2b2;
+    margin-top: 10px;
+    padding-top: 10px;
+    color: #b2b2b2;
+}
+
+.footer-nav{
+    text-align: right;
+    list-style: none;
+
+}
+.footer li:not(first-child):before
+{
+    content:'|';
+    padding:0px 10px;
+}
+
+.footer-nav li{
+    display: inline;
+    padding:0px 10px;
+}
+
+.footer-nav a{
+    color: #b2b2b2;
+}
+.footer-nav a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

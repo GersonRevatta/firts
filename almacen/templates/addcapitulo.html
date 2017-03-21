@@ -1,0 +1,128 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- -->
+	
+	            <CENTER>
+
+			          <div class="inner cover">
+			            <h1 class="cover-heading">Cursos.com... te da la Bienvenida <b>{{ request.session.userr  }}</b></h1>
+	            	
+	            	
+	          			</div>
+	            </CENTER>
+	          
+
+
+			<br>
+			<style type="text/css">
+	       			.row{
+	       				margin-left: 55px;
+	       				
+	       			}
+
+	       		</style>
+	          	<div class="row">
+	          {% for i in alistar  %}
+
+			
+
+	          	<div  id='aaa' class="btn btn-default" >
+						
+				          	<div class="col-md-5" style="
+				          	background-image: url('media/{{i.imagen}}');
+				          	background-size: 100% 100%;
+				          	width: 250px;
+				          	height: 240px;
+
+				          	">
+
+
+				          	
+				          	<a class='btn btn-danger' href="#" onclick="window.location.href='/{{i.codigo}}'"
+				          	>Agregar{{i.codigo}}</a>
+				          	<a class='btn btn-danger' href="#" onclick="window.location.href='/mostrarcapitulos/{{i.codigo}}'"
+				          	>Mostrar</a>
+				          	
+
+
+				          	</div>
+
+
+
+						
+	 			</div>	
+
+	          	
+
+	
+				{% endfor %}
+	          </div>
+	          <center>
+	          	
+		            <p class="lead">
+		            Te animamos a iniciar otro curso	
+		            </p>
+		            <p class="lead">
+		              
+		              				         	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Agregar Curso</button>
+		            </p>
+	         		
+	          </center>
+
+
+<br>
+<!-- popup para agregar curso -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Agregando Nuevo Tema </h4>
+      </div>
+      <div class="modal-body">
+        <!--  -->
+<form method="post" enctype="multipart/form-data" >
+{% csrf_token %}
+				
+				<table>
+					<tr>
+						<td>nombre</td>
+						<td>{{ frm.name }}	
+							{{ frm.name.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td>descripcion</td>
+						<td>{{ frm.descripcion }}	
+							{{ frm.descripcion.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td>Selecionar Imagen</td>
+						<td>{{ frm.imagen }}	
+							{{ frm.imagen.errors }}
+						</td>
+					</tr>
+										<tr>
+						<td>Selecionar </td>
+						<td>{{ fr.nombre }}	
+							{{ fr.nombre.errors }}
+						</td>
+					</tr>
+
+				</table>
+        	<button type="submit" class="btn btn-primary">Aceptar</button>
+        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</form>
+        <!--  -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+

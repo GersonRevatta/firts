@@ -1,0 +1,191 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<!-- agregando  -->
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <!-- 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        -->
+        <!-- Optional theme -->
+        <!--
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.13/push.min.js'></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.4.0/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/sweetalert2/6.4.0/sweetalert2.min.js"></script>
+
+        -->
+<!-- agregando -->
+
+
+<!--agregando lo de post -->
+  <script src="{% static "js/jquery-1.12.2.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "js/reconnecting-websocket.min.js" %}" type="text/javascript"></script>
+
+<!--agregando lo de post -->
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{% block title %} Document {% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<!-- agregamdo desde la fuente quitando los cdn  -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}">
+
+</head>
+<body>
+  
+  
+
+         
+              <nav class="navbar navbar-default navbar-static-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">Cursos.com...</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                              
+                              {% block search %}
+                              {% endblock %}
+                                 <ul class="nav navbar-nav navbar-right">
+                  <li class="active">
+                    <a class="btn" onclick="window.location.href='/'">Home</a>
+                  </li>
+                  <li>
+                    <a class="btn" onclick="window.location.href='/contacto'"">Contacto</a></li>
+                   {% if request.session.userr %}
+                   <li >
+                      <a  class="btn" onclick="window.location.href='/salir'" >Cerrar Sesion</a>
+                     
+                  </li>
+                  <li >
+                      <a  class="btn" onclick="window.location.href='/addcursos'">Cursos</a>
+                     
+                  </li>
+                 
+                   {% else %}
+                   <li >
+                      <a class="btn" onclick="window.location.href='/sesion'" >Loguin</a>
+                   </li>
+                   <li>
+                    <a class="btn" onclick="window.location.href='/register'" > Registrarse</a>
+                   </li>
+                   {% endif%}
+
+                </ul>
+                 
+                </div>
+              </div>
+            </nav>    
+         
+<!--
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Cursos.com.</h3>
+              <nav>
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="active">
+                    <a class="btn" onclick="window.location.href='/'">Home</a>
+                  </li>
+                  <li>
+                    <a class="btn" onclick="window.location.href='/contacto'"">Contacto</a></li>
+                   {% if request.session.userr %}
+                   <li >
+                      <a  class="btn" onclick="window.location.href='/salir'" >Cerrar Sesion</a>
+                     
+                  </li>
+                  <li >
+                      <a  class="btn" onclick="window.location.href='/cursos'">Cursos</a>
+                     
+                  </li>
+                   {% else %}
+                   <li >
+                      <a class="btn" onclick="window.location.href='/sesion'" >Loguin</a>
+                   </li>
+                   <li>
+                    <a class="btn" onclick="window.location.href='/register'" > Registrarse</a>
+                   </li>
+                   {% endif%}
+
+                </ul>
+              </nav>
+            </div>
+          </div>
+          -->
+
+    {% block content %}{% endblock %}
+		{% block registro %} {% endblock %}
+		{% block loguin %} {% endblock %}
+
+
+<style type="text/css">
+  .footer {
+  position: auto;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+ 
+}
+</style>
+      
+{% block footer %} 
+<div class="footer">
+  
+    <footer id="footer" class="site-footer">
+      <div class="container">
+        <div class="row">
+            
+              <div class="col-md-5">
+                <h4>Contact address</h4>
+                <address>
+                  #0989 <br>
+                  city od place, <br>
+                  country 
+                </address>
+              
+              </div>
+        </div>
+
+          <div class="bottom-footer">
+              <div class="col-md-5">Copyright Icanux 2017</div>
+              <div class="col-md-7">
+              <ul class="footer-nav">
+                <li><a href="">a</a></li>
+                <li><a href="">b</a></li>
+                <li><a href="">c</a></li>
+              </ul>
+              </div>
+            
+          </div>
+
+
+
+      </div>
+      </div>
+      
+    </footer>
+</div>
+        
+  {% endblock %}      
+ <script type="text/javascript" href="{% static 'js/jquery.js' %} "></script>   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<!-- quitando los cdn -->
+<script type="text/javascript" href="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

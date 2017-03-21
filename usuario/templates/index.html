@@ -1,0 +1,410 @@
+{% extends 'base.html' %}
+	{% block title%}Index{% endblock%}
+	{% block content %}
+
+<!--
+
+ <script type="text/javascript">
+	function limita(elEvento, maximoCaracteres) {
+	  var elemento = document.getElementById("texto");
+	 
+	  // Obtener la tecla pulsada 
+	  var evento = elEvento || window.event;
+	  var codigoCaracter = evento.charCode || evento.keyCode;
+	  // Permitir utilizar las teclas con flecha horizontal
+	  if(codigoCaracter == 37 || codigoCaracter == 39) {
+	    return true;
+	  }
+	 
+	  // Permitir borrar con la tecla Backspace y con la tecla Supr.
+	  if(codigoCaracter == 8 || codigoCaracter == 46) {
+	    return true;
+	  }
+	  else if(elemento.value.length >= maximoCaracteres ) {
+	    return false;
+	  }
+	  else {
+	    return true;
+	  }
+	}
+	 
+	function actualizaInfo(maximoCaracteres) {
+	  var elemento = document.getElementById("texto");
+	  var info = document.getElementById("info");
+	 
+	  if(elemento.value.length >= maximoCaracteres ) {
+	    info.innerHTML = "Máximo "+maximoCaracteres+" caracteres";
+	  }
+	  else {
+	    info.innerHTML = "Puedes escribir hasta "+(maximoCaracteres-elemento.value.length)+" caracteres adicionales";
+	  }
+	}
+	 
+</script>
+-->
+<!--
+<div id="info">Máximo 100 caracteres</div>
+<textarea id="texto" onkeypress="return limita(event, 10);" onkeyup="actualizaInfo(10)" rows="6" cols="30"></textarea>
+-->
+
+<script
+			  src="https://code.jquery.com/jquery-3.1.1.js"
+			  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+			  crossorigin="anonymous"></script>
+
+
+
+
+
+<br>
+{% if request.session.userr and  a.acceso != 'True' %}
+<div class="container ">
+<!--
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="RHCXNBXJKJSNU">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+</form>
+-->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="NW9HKGLU33KVL">
+<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+</div>
+{% endif %}
+
+<!--
+<input type=”hidden” name=”cmd” value=”_ext-enter” />
+<input type=”hidden” name=”redirect_cmd” value=”_xclick” />
+<input type=”hidden” name=”business” value=”tucuentadepaypal@ejemplo.com” />
+<!–   Aquí pondriamos el email de usuario de la cuenta de vendedor de Paypal o el nº de usuario de Paypal  –>
+
+<input type=”hidden” name=”item_name” value=”Nombre del producto o productos” />
+<!–   Aquí debemos de poner el nombre del producto para poder identificarlo –>
+
+<input type=”hidden” name=”item_number” value=”Numero de referencia del producto” />
+<!–   Nº de referencia del procuto, este campo es simplemente informativo –>
+
+<input type=”hidden” name=”quantity” value=”2″ />
+<!–   Cantidad de producto a cobrar. En este ejemplo he puesto dos, es decir, multiplicara por 2 la catidad que viene aquí debajo –>
+
+<input type=”hidden” name=”amount” value=”14.99″ />
+<!–   Precio de cada producto –>
+
+<input type=”hidden” name=”currency_code” value=”EUR” />
+<!–   Tipo de moneda en la que se va a cobrar al cliente o pagador –>
+
+<input type=”hidden” name=”return” value=”http://www.nutecoweb.com/return.html>” />
+<!–   URL o dirección a la cual nos redirigirá Paypal despues de terminar la compra satisfactoriamente –>
+
+<input type=”hidden” name=”notify_url” value=”http://www.nutecoweb.com/ok.php” />
+<!–   Esta URL es donde podemos poner un archivo PHP, que pueda procesar la compra una vez que se realice desde Pyapla sin tener que pasar por nuestra web. Por ejemplo mandar un email, añadir a una BBDD. es decir, este archivo o url es el que procesa realmente la compra en nuestra pagina web –>
+
+<input type=”hidden” name=”cancel_return” value=”http://www.nutecoweb.com/cancel.php” />
+<!–   URL o dirección a la cual nos redirigirá Paypal si se produce un error en el pago o el cliente lo cancela –>
+
+<input type=”hidden” name=”no_shipping” value=”1″ />
+<input type=”hidden” name=”shipping” value=”5.00″ />
+<!–  insertamos los gastos de envio. En este ejemplo hemos puesto 5 euros –>
+
+<input type=”hidden” name=”bn” value=”PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest” />
+
+<input type=”image” src=”imagenes/pago.png” border=”0″ name=”submit” alt=”Pagar para completar la compra.” />
+<!– Aquí ponemos la imagen de nuestro botón de paypal personalizado. Si no sabeis o no os apetece crear uno, hacer una búsqueda en google de botones –>
+
+
+ -->
+
+
+ 
+
+<!-- codigo experimental -->
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div id="your1" class="item active">
+          <img class="first-slide"  alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Example headline.</h1>
+              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+            </div>
+          </div>
+        </div>
+        <div id="your2" class="item">
+          <img class="second-slide"  alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Another example headline.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        <div id="your3" class="item">
+          <img class="third-slide" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>One more for good measure.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="/media/image/mate1.jpeg" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="/media/image/mate1.jpeg" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="/media/image/mate1.jpeg" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" style="width: 500px; height: 500px; background-color: blue;"  data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+
+          <img class="thumbnail   featurette-image img-responsive center-block" style="width: 500px; height: 500px; background-color: blue; " src="/media/image/mate1.jpeg" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" style="width: 500px; height: 500px; background-color: blue;"  data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      
+      
+
+      <hr class="featurette-divider">
+
+<style type="text/css">
+  .imagenCaracteristica{
+  
+  
+  background-image: url("/media/image/mate1.jpeg");
+  background-size: 100% 100%;
+  
+
+
+
+  }
+
+  /* agregando efecto parallax */
+</style>
+
+
+
+
+<style type="text/css">
+	
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
+}
+</style>
+
+
+<style type="text/css">
+  
+  #your1{
+    height: 500px;
+  background-attachment: fixed;
+
+
+   background-image: url('/media/image/mate1.jpeg');
+   background-size: 100% 100%;
+
+  }
+  #your2{
+    height: 500px;
+  background-attachment: fixed;
+
+
+   background-image: url('/media/image/mate1.jpeg');
+   background-size: 100% 100%;
+
+  }
+  #your3{
+    height: 500px;
+  
+
+   background-image: url('/media/image/mate1.jpeg');
+   background-size: 100% 100%;
+   
+
+  }
+</style>
+
+
+
+	{% endblock %}
+	{% block footer %} {% endblock %}
+

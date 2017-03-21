@@ -1,0 +1,31 @@
+		<div class="formulario">
+		<form  method="post" >{% csrf_token %}
+				
+				<center>
+			
+				<table>
+					<tr>
+						<td>User</td>
+						<td>{{ form.user }}	
+							{{ form.user.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>{{ form.email }}	
+							{{ form.email.errors }}
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>{{ form.body }}	
+							{{ form.body.errors }}
+						</td>
+					</tr>
+				</table>
+				<br>
+				<button class="btn btn-lg btn-default aj">Comment</button>
+				</center>	
+			</form>
+
+	</div>

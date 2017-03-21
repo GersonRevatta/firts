@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	            
+	             
+	          <center>
+		          <div class="inner cover">
+		            <h1 class="cover-heading">Bienvenido : <b>{{ request.session.userr  }}</b></h1>
+		            <p class="lead"> Cursos disponibles 
+		            </p>
+		          </div>
+	          	
+	          </center>
+
+	       		<style type="text/css">
+	       			.row{
+	       				margin-left: 55px;
+	       			}
+	       		</style>
+	          <div class="row">
+			          {% for i in ls  %}
+		 	          
+ 
+				<div  id='aaa' class="btn btn-default" >
+						
+				          	<div class="col-md-5" style="
+				          	background-image: url('media/{{i.imagen}}');
+				          	background-size: 100% 100%;
+				          	width: 250px;
+				          	height: 240px;
+				          	">
+				          	
+				          	<a class='btn btn-danger' href="#" onclick="window.location.href='/mostrarcapitulos/{{i.codigo}}'"
+				          	>Mostrar</a>
+				          	</div>
+
+						
+				</div>
+
+						{% endfor %}
+	          </div>
+	          <br>
+	            {%  if lis.gender == 't' %}
+	            <p class="lead">
+	            	
+	            	<center><p class="lead">Agrega un nuevo curso</p></center>
+	              	<center>
+	              		<a  class="btn btn-lg btn-default aj" onclick="window.location.href='/addcursos'" >Agregar curso</a>
+	              	</center>
+	            </p>
+	            <p class="lead">
+	            <center><p class="lead">Ver mis cursos creados</p></center>
+	            <center>	
+	              <a  class="btn btn-lg btn-default aj" onclick="window.location.href='/my'" >
+	              	Mis Cursos
+	              </a>
+	            </center>
+	            </p>
+	            {% endif %}
+
+
+	            <center>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            </center>
+	            
+				
+	            <center>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            </center>
+	            
+ 
+ 
+	            <center>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            </center>
+	            
+ 
+	            <center>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            <p>lorem299	dasflkadkfaldfka	</p>
+	            <br>
+	            </center>
+	            
+  
+	{% endblock %}
