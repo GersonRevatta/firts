@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 	{% block title%}Index{% endblock%}
+
+{% block emoji %}
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="http://cokapp.github.io/jquery-emoji/libs/jquery.emoji.min.css">
+<script src="http://cokapp.github.io/jquery-emoji/libs/jquery.emoji.min.js" type="text/javascript"></script>
+
+{% endblock %}  
 	{% block content %}
 
 <!--
@@ -405,6 +413,64 @@
 
 
 
-	{% endblock %}
-	{% block footer %} {% endblock %}
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="http://cokapp.github.io/jquery-emoji/libs/jquery.emoji.min.css">
+<script src="http://cokapp.github.io/jquery-emoji/libs/jquery.emoji.min.js" type="text/javascript"></script>
+<h2>joalkdf</h2>
+<h2>joalkdf</h2><h2>joalkdf</h2>
+<h2>joalkdf</h2>
+<h2>joalkdf</h2>
+<a id="emojiticon"  title="颜文字">颜文字</a>
+<div id="youcontent"></div>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $("#emojiticon").click(function(){
+
+      $('#emojiticon').cokEmoji({
+        appendto: '#youcontent',
+        autoparse: 'image',
+        position: 'right'
+      });
+    });
+  });
+</script>
+<p>sadñklfjasñlkdfjañslkdfjaslkñdf</p>
+<br>
+<p>sadñklfjasñlkdfjañslkdfjaslkñdf</p>
+<br>
+
+
+
+<h2>aajoalkdf</h2>
+<a id="emojiticona"  >aasdfdslkñfj</a>
+<div id="youcontent"></div>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $("#emojiticona").click(function(){
+      
+      $('#emojiticona').cokEmoji({
+        appendto: '#youcontent',
+        autoparse: 'image',
+        position: 'right'
+      });
+    });
+  });
+</script>
+<p>sadñklfjasñlkdfjañslkdfjaslkñdf</p>
+<br>
+<p>sadñklfjasñlkdfjañslkdfjaslkñdf</p>
+<br>
+<br>
+
+  {% endblock %}
+  {% block footer %} 
+
+<p>ñalksdjfkldña</p>
+<br>
+
+  {% endblock %}
 

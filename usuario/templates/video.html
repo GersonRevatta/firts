@@ -92,13 +92,68 @@
 			  				<h2>hola aqui el chat</h2>
 
 					<div class="chatCaja" style="background-color: #cccccc;">
-		
-						<div class="input-group  input-group-lg ">
-							 <button id="telegram" class="post-button  btn-default" style="height: 56px; width: 53px;"><span class="glyphicon glyphicon-send" ></span></button>
-							 <textarea placeholder="Di Algo" class="content-post  chat"  ></textarea>
-						</div>
+							<div class="input-group  input-group-lg ">
+							
+								<span class="input-group-addon post-button btn glyphicon glyphicon-send" id="sizing-addon1"></span>
+								<textarea required=""  style="width:300px; height: 70px;" placeholder="Di Algo... " class=" content-post chat form-control" >
+								</textarea>
+							</div>
+						
+						
 				    	
+						<br>
+
 				    	<!--
+
+
+				    	<div class="input-group  input-group-lg ">
+							
+							<span class="input-group-addon  glyphicon glyphicon-send" id="sizing-addon1"></span>
+							<textarea required=""  style="width: 1000px; height: 70px;" placeholder="Di Algo... " class=" content-post chat form-control" >
+							</textarea>
+						</div>
+						
+base
+
+						<div class="input-group  input-group-lg ">
+							 <button id="telegram" class="post-button  btn-default  input-group-addon" style="height: 56px; width: 53px;"><span class="glyphicon glyphicon-send" ></span></button>
+							 <textarea id="contento" placeholder="Di Algo" class="content-post  chat"  class="form-control"  ></textarea>
+						</div>
+
+<div class="input-group input-group-lg" >
+							<span class="input-group-addon" id="sizing-addon1"> Reply </span>
+							<input required="" type="password" placeholder="Repetir Contraseña" class="form-control" id="replyPass">
+							</div>	
+
+
+
+div class="input-group input-group-lg" >
+								<span class="input-group-addon" id="sizing-addon1">correo-@</span>
+									{{ formulario.correo }}	
+									{{ formulario.correo.errors }}
+								</div>
+								<br>
+
+
+
+
+				    	<a id="emoji"  title="颜文字">颜文字</a>
+<div id="content"></div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('a#emoji').cokEmoji({
+      appendto: '#content',
+      autoparse: 'image',
+      position: 'right'
+    });
+  });
+  <>
+
+<p class="lead emoji-picker-container">
+            <textarea class="form-control textarea-control" rows="3" placeholder="Textarea with emoji image input" data-emojiable="true"></textarea>
+          </p>
+
+
 					    <div id="posts" class="maxChat">
 
 					        {% for post in posts %}
@@ -242,31 +297,6 @@
 
 	          	
 
-<center>
-	
-<h4>Comenta , cualquier duda</h4>
-	<!-- formulario para un determinado rtema -->
-				<form class="form_" method="post">
-					{% csrf_token %}
-				
-		
-					<table>
-					
-						<tr>
-							
-							<td class="mensaje" >
-							<div class="input-group input-group-lg" >
-							
-			            		{{form.body}}
-								{{ form.email.errors}}
-							</div>
-							</td>
-						</tr>
-					</table>
-					<br>
-						<input class="btn btn-lg btn-default aj" type="submit" value="Enviar">
-					</form>
-
 					
 <style type="text/css">
 
@@ -280,8 +310,6 @@
 	 }
 </style>
 
-</center>
-<br>
 
 
 
@@ -626,4 +654,9 @@ body {
 	}
 }
 </style>
+<br>
+<br>
+
+
 {% endblock %}			
+

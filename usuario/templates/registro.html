@@ -36,7 +36,7 @@ input[type=number] {
 							<span class="input-group-addon" id="sizing-addon1">Usuario</span>
 							{{ frm.username }}	
 							{{ frm.username.errors }}
-							</div>	
+							</div>	<span id="idUser"></span>
 							<br>
 						</td>
 					</tr>
@@ -47,11 +47,25 @@ input[type=number] {
 							<span class="input-group-addon" id="sizing-addon1"> &nbsp;Pass &nbsp;</span>
 							{{ frm.password }}
 							{{ frm.password.errors }}
-							</div>	
+							</div>	<span id="idPass"></span>
 							<br>
 
-				</td>
+						</td>
 					</tr>
+					<tr><!-- verificacion de pass -->
+						<td>
+						<div class="input-group input-group-lg" >
+							<span class="input-group-addon" id="sizing-addon1"> Reply </span>
+							<input required="" type="password" placeholder="Repetir Contraseña" class="form-control" id="replyPass">
+							</div>	<span id="idReplyPass"></span>
+							<br>
+
+						</td>
+						
+					</tr>
+	
+
+
 					<tr>
 						
 						<td>
@@ -60,7 +74,7 @@ input[type=number] {
 							
 							{{ frm.dni }}
 							{{ frm.dni.errors }}
-							</div>	
+							</div>	<span id="idDni"></span>
 							<br>
 						</td>
 					</tr>
@@ -72,7 +86,7 @@ input[type=number] {
 							
 						{{ frm.email }}
 						{{ frm.email.errors }}
-							</div>	
+							</div>	<span id="idGmail"></span>
 							<br>
 						</td>
 					</tr>
@@ -83,7 +97,7 @@ input[type=number] {
 							
 							{{ frm.first_name }}
 							{{ frm.first_name.errors }}
-							</div>	
+							</div>		<span id="idNombre"></span>
 							<br>
 						</td>
 					</tr>
@@ -95,7 +109,7 @@ input[type=number] {
 							
 							{{ frm.last_name }}
 							{{ frm.last_name.errors }}
-							</div>	
+							</div>	<span id="idApellido"></span>
 							<br>
 						</td>
 					</tr>
@@ -120,6 +134,178 @@ input[type=number] {
 	</div>
 	
 
+				<style type="text/css">
+						.colorCampo{
+							background-color: #cccccc;
+						}
+						#idUser{
+							margin-left: 59px;
+							color: red;
+						}
+					</style>
+
+					<script type="text/javascript">
+						$(document).ready(function(){
+
+
+							$("#usuario").focusin(function(){
+								$("#idUser").html(" <span style='color: blue;'> Ingrese un nombre de Usuario</span> ");
+								$(this).addClass("colorCampo");
+							});
+							$("#usuario").focusout(function(){
+								if ($(this).val().length > 0 ) {
+									$("#idUser").html("<span style='color: green;'> Campo correcto </span>");
+									$(this).removeClass("colorCampo");
+								}else{
+									$("#idUser").html("<b>* Ingrese un nombre de Usuario</b>");
+									$(this).removeClass("colorCampo");
+								}
+							});
+
+							//validadcion de  password
+
+				$("#pass").focusin(function(){
+					$(this).addClass("colorCampo");
+					
+					
+					$("#idPass").html("<span style='color: blue;' >Constraseña de minimo 7 Caracteres </span>")
+				});
+
+				$("#pass").focusout(function(){
+					if ($(this).val().length > 0 && $(this).val().length < 7 ) {
+						$("#idPass").html("<span>Constraseña muy corta</span>")
+					}else if ($(this).val().length > 6 && $(this).val().length <= 32) {
+						$("#idPass").html("<span style='color:green;''> Constraseña valida!</span>")
+					}else{
+						$("#idPass").html("<span> Error:(Minimo  7 caracteres) </span>")
+					}
+					$(this).removeClass("colorCampo");
+
+				}); 
+				$("#replyPass").focusin(function(){
+
+					$(this).addClass("colorCampo");
+					$(this).attr("pattern","[a-zA-Z0-9/ñ]{7,32}");
+					$("#idReplyPass").html("<span> Volver a escribir Password</span>");
+				});
+
+				$("#replyPass").focusout(function(){
+					if ($(this).val().length == 0) {
+						$("#idReplyPass").html("");
+					}else if ($(this).val().length > 6 && $(this).val().length <= 31 ) {
+						if ($("#pass").val() === $("#replyPass").val() ) {
+							$("#idReplyPass").html("<span style='color:green;'>Tus contraseñas son iguales</span>");
+						}else{
+							$("#idReplyPass").html("<span style='color:red;'>Error: las contraseñas no coinciden</span>");
+						}
+					
+					}
+					else{
+						$("#idReplyPass").html("<span style='color:red;'>Error(Minimo 7 caracteres)</span>");
+					}
+					$(this).removeClass("colorCampo");
+				});
+
+
+				$("#dni").focusin(function(){
+					$(this).addClass("colorCampo");
+					$("#idDni").html("<span style='color: blue;' >Ingresa tu Dni </span>")
+
+				});
+
+				$("#dni").focusout(function(){
+					if ($(this).val().length > 0) {
+						if ($(this).val().length == 8 ) {
+							
+							$("#idDni").html("<span style='color: green;' > Completado Satisfactoriamente </span>")
+							$(this).removeClass("colorCampo");
+						}else{
+							$("#idDni").html("<span style='color:red;' > DNI incorrecto </span>")
+							$(this).removeClass("colorCampo");
+						}
+
+					}else{
+						$("#idDni").html("<span style='color: red;' > Por favor Ingrese Dni </span>")
+						$(this).removeClass("colorCampo");
+					}
+
+
+				});
+				
+					$("#gmail").focusin(function(){
+					$(this).addClass("colorCampo");
+					$("#idGmail").html("<span style='color: blue;' >Ingresa tu Correo </span>")
+
+				});
+					
+				$("#gmail").focusout(function(){
+					if ($(this).val().length > 0) {
+						if ($(this).val().length > 11 ) {
+							
+							$("#idGmail").html("<span style='color: green;' > Completado Satisfactoriamente </span>")
+							$(this).removeClass("colorCampo");
+						}else{
+							$("#idGmail").html("<span style='color:red;' > Correo  incorrecto </span>")
+							$(this).removeClass("colorCampo");
+						}
+
+					}else{
+						$("#idGmail").html("<span style='color: red;' > Por favor Ingrese su Correo </span>")
+						$(this).removeClass("colorCampo");
+					}
+
+
+				});
+
+				$("#nombre").focusin(function(){
+					$(this).addClass("colorCampo");
+					$("#idNombre").html("<span style='color: blue;' >Ingresa tu Nombre</span>")
+
+				});
+
+$("#nombre").focusout(function(){
+					if ($(this).val().length > 0) {
+						if ($(this).val().length > 2 ) {
+							
+							$("#idNombre").html("<span style='color: green;' > Completado Satisfactoriamente </span>")
+							$(this).removeClass("colorCampo");
+						}
+
+					}else{
+						$("#idNombre").html("<span style='color: red;' > Por favor Ingrese su Nombre </span>")
+						$(this).removeClass("colorCampo");
+					}
+
+
+				});
+
+				$("#apellido").focusin(function(){
+					$(this).addClass("colorCampo");
+					$("#idApellido").html("<span style='color: blue;' >Ingresa tu Apellido </span>")
+
+				});
+
+
+				$("#apellido").focusout(function(){
+					if ($(this).val().length > 0) {
+						if ($(this).val().length > 1 ) {
+							
+							$("#idApellido").html("<span style='color: green;' > Completado Satisfactoriamente </span>")
+							$(this).removeClass("colorCampo");
+						}
+
+					}else{
+						$("#idApellido").html("<span style='color: red;' > Por favor Ingrese su Apellido </span>")
+						$(this).removeClass("colorCampo");
+					}
+
+
+				});
+						});
+
+
+
+					</script>
 <style type="text/css">
   .footer {
   position: absolute;
@@ -130,6 +316,7 @@ input[type=number] {
  
 }
 </style>
+		
 		
 			
 		

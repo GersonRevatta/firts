@@ -19,7 +19,7 @@ class usuario (models.Model):
 	gender = models.CharField(choices=GENDER_CHOICES,default=STUDENT, max_length=128)
 	#acceso_free = models.DateTimeField(default=datetime.date.today)
 	acceso_free= models.DateTimeField(auto_now_add=True)
-	acceso = models.CharField(max_length=5,default=False)
+	accesoPaypal = models.CharField(max_length=5,default=False)
 	isOnline = models.CharField(max_length=32)
 #
 #

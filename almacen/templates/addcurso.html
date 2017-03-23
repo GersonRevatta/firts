@@ -147,23 +147,34 @@
 		<nav aria-label="Page navigation">
 		  <ul class="pagination">
 		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
+		     {% if ls.has_previous %}
+            <a aria-label="Previous" href="?page={{ ls.previous_page_number }}&q={{ request.GET.q }}">previous</a> <span aria-hidden="true">&laquo;</span>
+        	{% endif %}
 		    </li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
+		    <li><a href="">Page {{ ls.number }} of {{ ls.paginator.num_pages }}. </a></li>
+		    
 		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
+		    {% if ls.has_next %}
+            	<a aria-label="Next" href="?page={{ ls.next_page_number }}&q={{ request.GET.q }}">next
+            	</a><span aria-hidden="true">&raquo;</span>
+        	{% endif %}
+		      
 		    </li>
 		  </ul>
 		</nav>
 </div>
+
+
+<style type="text/css">
+  .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+ 
+}
+</style>
 
 {% endblock  %}
 

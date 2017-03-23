@@ -11,7 +11,7 @@
 							<span class="input-group-addon" id="sizing-addon1">&nbsp;Usuario&nbsp;</span>
 			            	{{c.username}}
 			              	{{ c.username.errors }}
-						</div>
+						</div><span id="idUser"></span>
 						<br>
 		            </td>
 		          </tr>
@@ -22,7 +22,7 @@
 							<span class="input-group-addon" id="sizing-addon1">Password</span>			
 			            	{{ c.password }}
 			                {{ c.password.errors }}
-						</div>
+						</div><span id="idPass"></span>
 						<br>
 		            </td>
 		          </tr>
@@ -33,7 +33,45 @@
 		  </center>
 
 		</form>
+<script type="text/javascript">
+	$(document).ready(function(){
 
+						$("#usuario").focusin(function(){
+								$("#idUser").html(" <span style='color: blue;'> Ingrese un nombre de Usuario</span> ");
+								$(this).addClass("colorCampo");
+							});
+							$("#usuario").focusout(function(){
+								if ($(this).val().length > 0 ) {
+									$("#idUser").html("<span style='color: green;'> Campo correcto </span>");
+									$(this).removeClass("colorCampo");
+								}else{
+									$("#idUser").html("<b>* Ingrese un nombre de Usuario</b>");
+									$(this).removeClass("colorCampo");
+								}
+							});
+
+							//validadcion de  password
+
+				$("#pass").focusin(function(){
+					$(this).addClass("colorCampo");
+					
+					
+					$("#idPass").html("<span style='color: blue;' >Constraseña de minimo 7 Caracteres </span>")
+				});
+
+				$("#pass").focusout(function(){
+					if ($(this).val().length > 0 && $(this).val().length < 7 ) {
+						$("#idPass").html("<span>Constraseña muy corta</span>")
+					}else if ($(this).val().length > 6 && $(this).val().length <= 32) {
+						$("#idPass").html("<span style='color:green;''> Constraseña valida!</span>")
+					}else{
+						$("#idPass").html("<span> Error:(Minimo  7 caracteres) </span>")
+					}
+					$(this).removeClass("colorCampo");
+
+				}); 
+	});
+</script>
 
 <style type="text/css">
   .footer {
