@@ -1,59 +1,9 @@
 {% extends 'base.html' %}
 	{% block title%}Index{% endblock%}
 
-{% block emoji %}
-<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="http://cokapp.github.io/jquery-emoji/libs/jquery.emoji.min.css">
-<script src="http://cokapp.github.io/jquery-emoji/libs/jquery.emoji.min.js" type="text/javascript"></script>
-
-{% endblock %}  
+ 
 	{% block content %}
 
-<!--
-
- <script type="text/javascript">
-	function limita(elEvento, maximoCaracteres) {
-	  var elemento = document.getElementById("texto");
-	 
-	  // Obtener la tecla pulsada 
-	  var evento = elEvento || window.event;
-	  var codigoCaracter = evento.charCode || evento.keyCode;
-	  // Permitir utilizar las teclas con flecha horizontal
-	  if(codigoCaracter == 37 || codigoCaracter == 39) {
-	    return true;
-	  }
-	 
-	  // Permitir borrar con la tecla Backspace y con la tecla Supr.
-	  if(codigoCaracter == 8 || codigoCaracter == 46) {
-	    return true;
-	  }
-	  else if(elemento.value.length >= maximoCaracteres ) {
-	    return false;
-	  }
-	  else {
-	    return true;
-	  }
-	}
-	 
-	function actualizaInfo(maximoCaracteres) {
-	  var elemento = document.getElementById("texto");
-	  var info = document.getElementById("info");
-	 
-	  if(elemento.value.length >= maximoCaracteres ) {
-	    info.innerHTML = "Máximo "+maximoCaracteres+" caracteres";
-	  }
-	  else {
-	    info.innerHTML = "Puedes escribir hasta "+(maximoCaracteres-elemento.value.length)+" caracteres adicionales";
-	  }
-	}
-	 
-</script>
--->
-<!--
-<div id="info">Máximo 100 caracteres</div>
-<textarea id="texto" onkeypress="return limita(event, 10);" onkeyup="actualizaInfo(10)" rows="6" cols="30"></textarea>
--->
 
 <script
 			  src="https://code.jquery.com/jquery-3.1.1.js"
@@ -65,7 +15,7 @@
 
 
 <br>
-{% if request.session.userr and  a.acceso != 'True' %}
+{% if request.session.userr and  a.accesoPaypal != 'True' %}
 <div class="container ">
 <!--
 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -411,66 +361,127 @@
   }
 </style>
 
-
-
-
-<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="http://cokapp.github.io/jquery-emoji/libs/jquery.emoji.min.css">
-<script src="http://cokapp.github.io/jquery-emoji/libs/jquery.emoji.min.js" type="text/javascript"></script>
-<h2>joalkdf</h2>
-<h2>joalkdf</h2><h2>joalkdf</h2>
-<h2>joalkdf</h2>
-<h2>joalkdf</h2>
-<a id="emojiticon"  title="颜文字">颜文字</a>
-<div id="youcontent"></div>
-<script type="text/javascript">
-  $(document).ready(function(){
-
-    $("#emojiticon").click(function(){
-
-      $('#emojiticon').cokEmoji({
-        appendto: '#youcontent',
-        autoparse: 'image',
-        position: 'right'
-      });
-    });
-  });
-</script>
-<p>sadñklfjasñlkdfjañslkdfjaslkñdf</p>
 <br>
-<p>sadñklfjasñlkdfjañslkdfjaslkñdf</p>
-<br>
+<h2>hola esta es la parte  del diseño de la imagen con el efecto hover</h2>
 
-
-
-<h2>aajoalkdf</h2>
-<a id="emojiticona"  >aasdfdslkñfj</a>
-<div id="youcontent"></div>
-<script type="text/javascript">
-  $(document).ready(function(){
-
-    $("#emojiticona").click(function(){
+<div class="arbol">
+    <img src="/media/image/mate1.jpeg" alt="">
+    <a href="#" class="absoluto"></a>
+    <div class="texto absoluto">
+      <h2>NOTICIA <span>UNO</span> <i>Leer Más...</i></h2>
       
-      $('#emojiticona').cokEmoji({
-        appendto: '#youcontent',
-        autoparse: 'image',
-        position: 'right'
-      });
-    });
-  });
-</script>
-<p>sadñklfjasñlkdfjañslkdfjaslkñdf</p>
-<br>
-<p>sadñklfjasñlkdfjañslkdfjaslkñdf</p>
-<br>
-<br>
+    </div>
+</div>
+<style type="text/css">
+  .absoluto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
+div.arbol {
+  position: relative;
+  overflow: hidden;
+  max-width: 500px;
+  max-height: 333px;
+  display: block;
+  margin: 40px auto;
+}
+
+div.arbol:hover img {
+  opacity: 0.5;
+}
+
+div.arbol:hover div.texto:before {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+div.arbol:hover div.texto h2 {
+  -webkit-transform: translate3d(0, -10px, 0);
+          transform: translate3d(0, -10px, 0);
+}
+
+div.arbol:hover div.texto h2 i {
+  -webkit-transform: translate3d(0, -10px, 0);
+          transform: translate3d(0, -10px, 0);
+  opacity: 1;
+}
+
+div.arbol img {
+  opacity: 0.9;
+  transition: opacity 0.35s;
+}
+
+div.arbol a {
+  z-index: 100;
+}
+
+div.arbol div.texto {
+  font-family: 'Dosis', sans-serif;
+  color: #fff;
+}
+
+div.arbol div.texto:before {
+  content: '';
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  height: 10px;
+  background: #fff;
+  width: 100%;
+  -webkit-transform: translate3d(0, 10px, 0);
+          transform: translate3d(0, 10px, 0);
+  transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  transition: transform 0.35s, -webkit-transform 0.35s;
+}
+
+div.arbol div.texto h2 {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  padding: 1em 1.5em;
+  font-size: 2.1em;
+  font-weight: 300;
+  -webkit-transform: translate3d(0, -45px, 0);
+          transform: translate3d(0, -45px, 0);
+  transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  transition: transform 0.35s, -webkit-transform 0.35s;
+}
+
+div.arbol div.texto h2 span {
+  font-weight: 700;
+}
+
+div.arbol div.texto h2 i {
+  font-style: normal;
+  opacity: 0;
+  -webkit-transform: translate3d(0, -45px, 0);
+          transform: translate3d(0, -45px, 0);
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+}
+
+</style>
+<br>
+<h2>agregando efecto a la imagen de los cursos</h2>
+
+<div class="col-md-5" style="
+                    background-image: url('/media/image/mate1.jpeg');
+                    background-size: 100% 100%;
+                    width: 250px;
+                    height: 240px;
+
+                    ">
   {% endblock %}
-  {% block footer %} 
+  
+{% block footer %}
 
-<p>ñalksdjfkldña</p>
-<br>
-
-  {% endblock %}
-
+{% endblock %}

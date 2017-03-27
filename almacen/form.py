@@ -35,7 +35,7 @@ class VideoForm(forms.ModelForm):
 		fields=['filename','docfile','tipoArchivo']
 		widgets = {
 			'filename' : forms.TextInput(attrs = {'placeholder': 'Nombre del Archivo','class':'form-control'}),
-			'docfile':	forms.URLInput(attrs = {'placeholder': 'Ingrese la URL','class':'form-control','id':'enlace','pattern':'http://www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)'}),
+			'docfile':	forms.URLInput(attrs = {'placeholder': 'Ingrese la URL','class':'form-control','id':'enlace','pattern':'https:\/\/www.youtube.com\/watch(.+)'}),
 			#'tipoArchivo': forms.CharInput(widget=forms.RadioSelect, choices=Video.Type_CHOICES)
 			'tipoArchivo': forms.Select(attrs = {'onchange':'ShowSelectedd()','id':'tipoArchivo'}),
 			'smart_phone_ownership': forms.Select(attrs = {'name' : 'pos','id':'pos'}),

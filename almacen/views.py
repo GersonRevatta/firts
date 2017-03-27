@@ -37,11 +37,10 @@ def creandoCursos(request):
 	frm = CursoForm()
 	try:
 		lis = usuario.objects.get(username=request.session['userr'])
-		ls = Curso.objects.all()	
-		
+		ls = Curso.objects.filter(accesoCurso='act')
 	except :
 		pass
-
+	
 	query = request.GET.get("q")
 	if query:
 		ls = ls.filter(
@@ -49,7 +48,7 @@ def creandoCursos(request):
 			Q(usuario__username__startswith=query)
 			).distinct()	
 
-	paginator = Paginator(ls,30)		
+	paginator = Paginator(ls,40)		
 	page_request_var = "page"
 	page = request.GET.get(page_request_var)
 	try:

@@ -236,14 +236,20 @@ var cod = document.getElementById("tipoArchivo").value;
 
 if (cod == 'vim') {
 
-	d.setAttribute("pattern", "https://(vimeo\.com/[0-9]+($|\?.*)|player\.vimeo\.com/video/[0-9]*($|\?.+))");
-
+	//d.setAttribute("pattern", "https://(vimeo\.com/[0-9]+($|\?.*)|player\.vimeo\.com/video/[0-9]*($|\?.+))");
+	d.setAttribute("pattern", "https:\/\/(vimeo).com\/[0-9]{8}");
+	d.setAttribute("style","background-color:blue;");
  
 
 }else{
 	
-	d.setAttribute("pattern","http://www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)");
-
+	//d.setAttribute("pattern","http:\/\/www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)");
+	// firme d.setAttribute("pattern","https:\/\/www.youtube.com\/watch\?v=[A-Za-z0-9]{11}|https:\/\/www.youtube.com\/watch\?v=[A-Za-z0-9]{11}&list=(.+)");
+	//d.setAttribute("pattern","https:\/\/www.youtube.com\/watch\?v=[A-Za-z0-9]{11}");
+	//https:\/\/www.youtube.com\/watch\?v=[A-Za-z0-9]{11}&list=[A-Za-z0-9]{4,40}|https:\/\/www.youtube.com\/watch\?v=[A-Za-z0-9]{11}
+	//d.setAttribute("pattern","https:\/\/www.youtube.com\/watch\?v=[A-Za-z0-9]{11}&list=[A-Za-z0-9]{4,}|https:\/\/www.youtube.com\/watch\?v=[A-Za-z0-9]{11}");
+	d.setAttribute("pattern","https:\/\/www.youtube.com\/watch(.+)");
+	d.setAttribute("style","background-color:red;");
 
 }
  

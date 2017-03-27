@@ -27,7 +27,7 @@
 	              	</center>
 	            </p>
 	            <p class="lead">
-	            <center><p class="lead">Ver mis cursos creados</p></center>
+	            <center><p class="lead">Ver mis cursos creados </p></center>
 	            <center>	
 	              <a  class="btn btn-lg btn-default aj" onclick="window.location.href='/my'" >
 	              	Mis Cursos
@@ -44,7 +44,7 @@
 			          {% for i in ls  %}	 	          
 				
 			 				{% if i.accesoCurso == 'act' %}
-							<div  id='aaa' class="btn btn-default"  onclick="window.location.href='mostrarcapitulos/{{i.codigo}}'">
+							<div  id='aaa' class="btn btn-default" style="margin-bottom: 16px; margin-left: 17px;" onclick="window.location.href='mostrarcapitulos/{{i.codigo}}'">
 									
 							          	<div class="col-md-5" style="
 							          	background-image: url('media/{{i.imagen}}');
@@ -52,6 +52,7 @@
 							          	width: 250px;
 							          	height: 240px;
 							          	">
+							          	<h3>{{ i.name }}</h3>
 							          	<!-- 
 							          	<a class='btn btn-danger' href="#" onclick="window.location.href='mostrarcapitulos/{{i.codigo}}'"
 							          	> Mostrar </a>
@@ -125,6 +126,7 @@
   </div>
 </div>
 <!-- paginations -->
+<!-- paginacion simple
 <div class="pagination Page navigation">
     <span class="step-links">
         {% if ls.has_previous %}
@@ -140,7 +142,7 @@
         {% endif %}
     </span>
 </div>
-
+-->
 <!-- pagination of bootsrap-->   
 <br>
 <div class="text-center">
@@ -148,14 +150,15 @@
 		  <ul class="pagination">
 		    <li>
 		     {% if ls.has_previous %}
-            <a aria-label="Previous" href="?page={{ ls.previous_page_number }}&q={{ request.GET.q }}">previous</a> <span aria-hidden="true">&laquo;</span>
+            <a aria-label="Previous" href="?page={{ ls.previous_page_number }}&q={{ request.GET.q }}"><b>
+            Anterior</b></a> <span aria-hidden="true">&laquo;</span>
         	{% endif %}
 		    </li>
 		    <li><a href="">Page {{ ls.number }} of {{ ls.paginator.num_pages }}. </a></li>
 		    
 		    <li>
 		    {% if ls.has_next %}
-            	<a aria-label="Next" href="?page={{ ls.next_page_number }}&q={{ request.GET.q }}">next
+            	<a aria-label="Next" href="?page={{ ls.next_page_number }}&q={{ request.GET.q }}"><b>Siguiente</b>
             	</a><span aria-hidden="true">&raquo;</span>
         	{% endif %}
 		      
@@ -175,6 +178,7 @@
  
 }
 </style>
+
 
 {% endblock  %}
 

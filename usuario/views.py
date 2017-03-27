@@ -28,9 +28,9 @@ from django.core.urlresolvers import reverse
 
 from django.db.models.functions import Upper
 
-
-
-#esto lo estoy importando desde chat
+from django.core.paginator import Paginator ,EmptyPage ,PageNotAnInteger
+from django.db.models import Q
+#esto lo estoy importando desde chat      
 
 
 def registro(request): 
@@ -66,7 +66,7 @@ def registro(request):
 				new_profile = UserProfile(user=user, activation_key=activation_key, key_expires=key_expires)
 				new_profile.save()
 
-			# Enviar un email de confirmación
+			# Enviar un email de confirmación   
 				email_subject = 'Account confirmation'
 				email_body = "Hola %s, Gracias por registrarte. Para activar tu cuenta da clíck en este link en menos de 48 horas: http://127.0.0.1:8000/accounts/confirm/%s" % (a.username, activation_key)
 
@@ -95,31 +95,40 @@ def loguin(request):
 
 			if c==True:
 				#para poder loguearse verifica
-				#
+				# 
 				#
 				Online= usuario.objects.get(username= request.POST['username'])
-				if Online.isOnline == 'False':
-					preAcceso = usuario.objects.get(username= request.POST['username'])
-					aeiou = preAcceso.id
-					pre = UserProfile.objects.get(user=aeiou)
-					#agregando la funcionalidad para un solo usuario
-					preAcceso.isOnline = 'True'
-					preAcceso.save()
-					if preAcceso.acceso == 'True':
+				
+				preAcceso = usuario.objects.get(username= request.POST['username'])
+				aeiou = preAcceso.id
+				pre = UserProfile.objects.get(user=aeiou)
+				#agregando la funcionalidad para un solo usuario
+				
+				if preAcceso.accesoPaypal == 'True':
+					if Online.isOnline == 'False':
 						z = request.POST['username']		
-								#return render(request,test.html,args)
+							#return render(request,test.html,args)
+						preAcceso.isOnline = 'True'
+						preAcceso.save()		
 						request.session['userr']=z	
 						return HttpResponseRedirect(reverse('index'))
-							
-					if pre.activacion_url == 'True':
-						if preAcceso.acceso_free > timezone.now():
+					else:
+						return HttpResponseRedirect(reverse('registro'))			
 						
-							z = request.POST['username']		
-								#return render(request,test.html,args)
+				if  pre.activacion_url == 'True':
+					if preAcceso.acceso_free > timezone.now():
+						if Online.isOnline == 'False':
+							z = request.POST['username']			
+							#return render(request,test.html,args)
 							request.session['userr']=z	
+							preAcceso.isOnline = 'True'
+							preAcceso.save()		
 						else:
-							context = {'c':c}
-							return render(request,'prueba_terminada.html',context)
+							return HttpResponseRedirect(reverse('registro'))			
+									
+					else:
+						context = {'c':c}
+						return render(request,'prueba_terminada.html',context)
 							 
 					#return HttpResponseRedirect(reverse('create'))
 					return HttpResponseRedirect(reverse('index'))
@@ -127,9 +136,6 @@ def loguin(request):
 					return HttpResponseRedirect(reverse('loguin'))
 
 
-			else:	
-
-				return  HttpResponseRedirect(reverse('loguin'))
 				
 	else:
 		c=FormularioRegistro()
@@ -156,7 +162,7 @@ def logout(request):
 
 def pago(request):
 	lis = usuario.objects.get(username=request.session['userr'])
-	lis.acceso = True
+	lis.accesoPaypal = True
 	lis.save()
 	return  HttpResponseRedirect(reverse('index'))
 	
@@ -244,10 +250,60 @@ def miscursos(request):
 		alistar = Curso.objects.filter(usuario=listar)
 	except KeyError:
 		pass
+	query = request.GET.get("q")
+	if query:
+		alistar = alistar.filter(
+			Q(name__startswith=query)|
+			Q(usuario__username__startswith=query)
+			).distinct()	
+
+	paginator = Paginator(alistar,40)		
+	page_request_var = "page"
+	page = request.GET.get(page_request_var)
+	try:
+		alistar = paginator.page(page)
+	except PageNotAnInteger:
+		alistar = paginator.page(1)
+	except EmptyPage:
+		alistar = paginator.page(paginator.num_pages)	
+	
 	context = {'alistar':alistar,'frm':frm,'fr':fr}	
 	return	render(request,'miscursos.html',context)	
 
 """
+	try:
+		lis = usuario.objects.get(username=request.session['userr'])
+		ls = Curso.objects.filter(accesoCurso='act')
+	except :
+		pass
+	
+	query = request.GET.get("q")
+	if query:
+		alistar = alistar.filter(
+			Q(name__startswith=query)|
+			Q(usuario__username__startswith=query)
+			).distinct()	
+
+	paginator = Paginator(alistar,1)		
+	page_request_var = "page"
+	page = request.GET.get(page_request_var)
+	try:
+		alistar = paginator.page(page)
+	except PageNotAnInteger:
+		alistar = paginator.page(1)
+	except EmptyPage:
+		alistar = paginator.page(paginator.num_pages)	
+		
+	context = {'frm':frm,'fr':fr,'lis':lis,'ls':ls}
+			
+
+	return render(request,'addcurso.html',context)
+
+
+
+
+
+
 
 from chat.models import Room
 from chat.forms import RoomForm
